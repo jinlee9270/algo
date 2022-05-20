@@ -1,0 +1,13 @@
+def solution(numbers):
+    num_checks = [True] * 10
+    answer = 0
+    
+    for num in numbers:
+        if num_checks[num]:
+            num_checks[num] = False
+    
+    for i in range(10):
+        if num_checks[i]:
+            answer = answer + i
+    
+    return answer
