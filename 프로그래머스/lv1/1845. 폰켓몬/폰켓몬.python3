@@ -1,0 +1,11 @@
+def solution(nums):
+    answer = 0
+    max_num = len(nums) // 2
+    set_nums = set(nums)
+    
+    if max_num > len(set_nums):
+        answer = len(set_nums)
+    else:
+        answer = max_num
+        
+    return answer
