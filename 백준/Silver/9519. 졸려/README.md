@@ -41,7 +41,7 @@ print(max_length)
   - 테스트 케이스로 `n = 1`, `k = 1`, `랜선에 1`을 넣으면 발생하는 것을 알았다.
   - 이때 **left는 0 + right 1 이기 때문에 mid 값은 0**이 된다.
 - 답으로 도출해야 하는 것은 k개 이상의 랜선을 일정 길이로 만들 수 있을때 해당 길이의 최댓값을 구하려고 하는 것이기 때문에 0으로 설정한 것은 길이의 의미와도 맞지 않다. 따라서 나올 수 있는 길이의 최솟값은 1로 설정해야 한다.
-  - 같은 유형의 문제인 [2110번 공유기설치](https://www.acmicpc.net/problem/2110)는 `left`를 0으로 두고 풀어서 맞았었는데 [이 문제 해설은 여기서](https://velog.io/@jinlee/%EB%B0%B1%EC%A4%80-%EA%B3%B5%EC%9C%A0%EA%B8%B0-%EC%84%A4%EC%B9%98)
+  - 같은 유형의 문제인 [2110번 공유기설치](https://www.acmicpc.net/problem/2110)는 `left`를 0으로 두고 풀어서 맞았었는데 [이 문제 해설은 여기서](https://github.com/jinlee9270/algo/blob/master/%EB%B0%B1%EC%A4%80/Gold/2110.%E2%80%85%EA%B3%B5%EC%9C%A0%EA%B8%B0%E2%80%85%EC%84%A4%EC%B9%98/README.md)
 
 ### 성능 요약
 
