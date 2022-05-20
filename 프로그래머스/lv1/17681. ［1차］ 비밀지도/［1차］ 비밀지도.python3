@@ -1,0 +1,24 @@
+def solution(n, arr1, arr2):
+    answer = []
+    results = [[' '] * n for _ in range(n)]
+    
+    for i in range(n):
+        temp1_arr = [0] * n
+        temp2_arr = [0] * n
+        temp1 = arr1[i]
+        temp2 = arr2[i]
+        
+        for j in range(n):
+            temp1_arr[j] = temp1 % 2
+            temp1 = temp1 // 2
+            temp2_arr[j] = temp2 % 2
+            temp2 = temp2 // 2
+            
+        for j in range(n):
+            if temp1_arr[j] == 1 or temp2_arr[j] == 1:
+                results[i][j] = '#'
+                
+        results[i].reverse()
+        answer.append(''.join(results[i]))
+        
+    return answer
