@@ -1,0 +1,18 @@
+def solution(id_list, report, k):
+    set_report = set(report)
+    answer = [0] * (len(id_list))
+    
+    dict_report = {}
+    for i in id_list:
+        dict_report[i] = []
+    
+    for reporting in set_report:
+        user_id, reported_id = reporting.split()
+        dict_report[reported_id].append(user_id)
+
+    for key in dict_report:
+        if len(dict_report[key]) >= k:
+            for i in dict_report[key]:
+                answer[id_list.index(i)] = answer[id_list.index(i)] + 1
+        
+    return answer
