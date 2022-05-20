@@ -1,0 +1,43 @@
+def solution(N, stages):
+    answer = []
+    not_clears = [0] * (N + 2)
+    clears = [0] * (N + 2)
+    # 501 번째는 모두 클리어한 유저 수
+        
+    for stage in stages:
+        not_clears[stage] = not_clears[stage] + 1
+        # stage별 도달 했지만 해당 stage를 클리어 하지 못한 플레이어의 수를 구함(분자)
+    
+    user_num = len(stages)
+    # stages 배열의 원소의 갯수는 유저 수를 의미
+    
+    temp = 0
+    for i in range(1, N + 2):
+        temp = temp + not_clears[i - 1] 
+        clears[i] = user_num - temp
+        # stage를 클리어한 유저의 수(분모)
+    
+    results = {}
+    for i in range(1, N + 1):
+        if not_clears[i] == 0:
+            if 0 not in results:
+                results[0] = [i]
+            else:
+                results[0].append(i)
+        
+        else:
+            if (not_clears[i] / clears[i]) not in results:
+                results[(not_clears[i] / clears[i])] = [i] 
+            else:
+                results[(not_clears[i] / clears[i])].append(i)
+            
+    results_key = list(results.keys())
+    results_key.sort(reverse = True)
+    
+    # print(not_clears, clears, results, results_key)
+    
+    for key in results_key:
+        # print(results[key], key)
+        answer = answer + results[key]
+    
+    return answer
