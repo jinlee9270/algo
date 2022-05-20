@@ -1,0 +1,18 @@
+def solution(numbers, target):
+    answer = dfs(0, numbers, target)
+    return answer
+
+def dfs(step, numbers, target):
+    answer = 0
+    
+    if step == len(numbers):
+        if sum(numbers) == target:
+            return 1
+        else:
+            return 0
+    else:
+        answer = answer + dfs(step + 1, numbers, target)
+        numbers[step] = - numbers[step]
+        answer = answer + dfs(step + 1, numbers, target)
+        
+    return answer
