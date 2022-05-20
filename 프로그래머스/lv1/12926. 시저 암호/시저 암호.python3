@@ -1,0 +1,15 @@
+def solution(s, n):
+    answer = ''
+    list_s = list(s)
+    
+    for string in list(s):
+        if string == ' ':
+            answer += string
+        else:
+            if string.isupper():
+                answer += chr((ord(string) - ord('A') + n) % 26 + ord('A'))
+            else:
+                answer += chr((ord(string) - ord('a') + n) % 26 + ord('a'))
+                
+            
+    return answer
