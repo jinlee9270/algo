@@ -1,0 +1,16 @@
+def solution(n):
+    primes = [True] * (n + 1)
+    primes[0] = False
+    primes[1] = False
+    
+    for i in range(2, n):
+        if primes[i]:
+            for j in range(i, (n // i) + 1):
+                primes[i * j] = False
+                
+    answer = 0
+    for i in range(2, n + 1):
+        if primes[i]:
+            answer += 1
+    
+    return answer
