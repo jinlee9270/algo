@@ -1,0 +1,23 @@
+def solution(dartResult):
+    stack = []
+    dartResult = dartResult.replace('10', 'a')
+    bonus = {'S': 1, 'D': 2, 'T': 3}
+    
+    for data in dartResult:
+        if data.isdigit() or data=='a':
+            if data == 'a':
+                stack.append(10)
+            else:
+                stack.append(int(data))
+        elif data in ('S', 'D', 'T'):
+            num = stack.pop()
+            stack.append(num ** bonus[data])
+        elif data == '#':
+            stack[-1] = stack[-1] * -1
+        elif data == '*':
+            num = stack.pop()
+            if len(stack):
+                stack[-1] = stack[-1] * 2
+            stack.append(2 * num)
+            
+    return sum(stack)
