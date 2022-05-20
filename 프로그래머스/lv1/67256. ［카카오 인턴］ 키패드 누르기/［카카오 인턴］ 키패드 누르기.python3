@@ -1,0 +1,36 @@
+def solution(numbers, hand):
+    keypad = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ["*", 0, '#']]
+    answer = []
+    numbers = list(map(int, numbers))
+    left_idx = [3,0]
+    right_idx = [3,2]
+    
+    for number in numbers:
+        if number == 1 or number == 4 or number == 7:
+            answer.append('L')
+            left_idx = [number // 3, 0]
+        elif number == 3 or number == 6 or number == 9:
+            answer.append('R')
+            right_idx = [number // 4, 2]
+        else:
+            for i in range(4):
+                for j in range(3):
+                    if keypad[i][j] == number:
+                        left_move = abs(left_idx[0] - i) + abs(left_idx[1] - j)
+                        right_move = abs(right_idx[0] - i) + abs(right_idx[1] - j)
+                        now = [i, j]
+            if left_move > right_move:
+                answer.append('R')
+                right_idx = now
+            elif left_move < right_move:
+                answer.append('L')
+                left_idx = now
+            else:
+                if hand == "right":
+                    answer.append('R')
+                    right_idx = now
+                else:
+                    answer.append('L')
+                    left_idx = now
+        
+    return ''.join(answer)
