@@ -1,0 +1,15 @@
+def solution(s):
+    s_lower = s.lower()
+    
+    p_count = 0
+    y_count = 0
+    for string in s_lower:
+        if string == 'p':
+            p_count = p_count + 1
+        elif string == 'y':
+            y_count = y_count + 1
+    
+    if p_count == y_count:
+        return True
+    else:
+        return False
