@@ -1,0 +1,21 @@
+def solution(board, moves):
+    answer = 0
+    n = len(board[0])
+    stack = []
+    
+    for pick in moves:
+        i = 0
+        while i < n:
+            if board[i][pick - 1] != 0:
+                stack.append(board[i][pick - 1])
+                board[i][pick - 1] = 0
+                
+                if len(stack) >= 2 and stack[-1] == stack[-2]:
+                    stack.pop()
+                    stack.pop()
+                    answer = answer + 2
+                break
+                
+            i = i + 1
+                    
+    return answer
