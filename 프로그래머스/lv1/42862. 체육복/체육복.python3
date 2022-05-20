@@ -1,0 +1,19 @@
+def solution(n, lost, reserve):
+    
+    reserve_only = set(reserve) - set(lost)
+    lost_only = set(lost) - set(reserve)
+    
+    for rev in reserve_only:
+        
+        front = rev - 1
+        back = rev + 1
+        
+        if front in lost_only:
+            lost_only.remove(front)
+            
+        elif back in lost_only:
+            lost_only.remove(back)
+            
+    answer = n - len(lost_only)
+    
+    return answer
