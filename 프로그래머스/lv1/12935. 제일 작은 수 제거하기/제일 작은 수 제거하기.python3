@@ -1,0 +1,16 @@
+def solution(arr):
+    answer = []
+    mn = min(arr)
+    idx = 0
+    
+    if len(arr) == 1:
+        return [-1]
+    else:
+        for i in range(len(arr)):
+            if arr[i] == mn:
+                idx = i
+                break
+    
+    arr.pop(idx)
+    return arr    
+    
