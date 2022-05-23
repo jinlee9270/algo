@@ -1,0 +1,14 @@
+def solution(n):
+    answer = ''
+    temp = []
+    
+    while n > 0:
+        temp.append(n % 10)
+        n = n // 10
+    
+    temp.sort(reverse=True)
+    
+    for i in temp:
+        answer += str(i)
+    
+    return int(answer)
