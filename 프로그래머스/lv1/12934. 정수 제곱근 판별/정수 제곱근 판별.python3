@@ -1,0 +1,12 @@
+def solution(n):
+    temp = 1
+    answer = -1
+    
+    while temp <= n:
+        if n % temp == 0 and n // temp == temp:
+            answer = (temp + 1) * (temp + 1)
+            break
+        else:
+            temp += 1
+        
+    return answer
