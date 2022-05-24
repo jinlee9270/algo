@@ -1,0 +1,8 @@
+def solution(phone_number):
+    answer = ''
+    last_number = phone_number[-4:]
+    
+    answer = '*' * len(phone_number[:-4])
+    answer += last_number
+    
+    return answer
