@@ -1,0 +1,36 @@
+def solution(n, m):
+    answer = [0,0]
+    mn = min(n, m)
+    mx = max(n, m)
+    mn_candidates = set()
+    mx_candidates = set()
+    gcd = 0
+    lcm = 0
+    
+    for i in range(1, mx + 1):
+        if mn % i == 0:
+            mn_candidates.add(i)
+        if mx % i == 0:
+            mx_candidates.add(i)
+    
+    gdc = max(mn_candidates.intersection(mx_candidates))
+    lcm_candidates = []
+    
+    for i in mn_candidates:
+        for j in mx_candidates:
+            if i * j > 1000000:
+                break
+            else:
+                lcm_candidates.append(i * j)
+    
+    lcm_candidates.sort()
+    
+    for temp in lcm_candidates:
+        if temp % mn == 0 and temp % mx == 0:
+            lcm = temp
+            break
+    
+    answer[0] = gdc
+    answer[1] = lcm
+    
+    return answer
