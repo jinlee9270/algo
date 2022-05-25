@@ -2,6 +2,7 @@ n = int(input())
 wines = []
 dp = [0] * 10001
 wines = [0] * 10001
+
 for i in range(n):
     wines[i] = int(input())
 
