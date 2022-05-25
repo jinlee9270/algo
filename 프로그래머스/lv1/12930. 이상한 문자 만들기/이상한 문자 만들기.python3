@@ -1,0 +1,18 @@
+def solution(s):
+    answer = ''
+    word_idx = 0
+    total_idx = 0
+
+    while len(s) > total_idx:
+        if s[total_idx] != ' ' and word_idx % 2 == 0:
+            answer += s[total_idx].upper()
+        elif s[total_idx] != ' ' and word_idx % 2 == 1:
+            answer += s[total_idx].lower()
+        else:
+            answer += s[total_idx]
+            word_idx = -1
+
+        total_idx += 1
+        word_idx += 1
+
+    return answer
