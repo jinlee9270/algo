@@ -1,0 +1,33 @@
+def solution(progresses, speeds):
+    answer = []
+    checkers = [0] * 101
+    done = [0] * len(progresses)
+    day = 0
+
+    while True:
+        for i in range(len(progresses)):
+            if progresses[i] >= 100 and done[i] == 0:
+                done[i] = day
+            else:
+                if progresses[i] + speeds[i] >= 100 and done[i] == 0:
+                    done[i] = day + 1
+                progresses[i] += speeds[i]
+
+        day += 1
+        if 0 not in done:
+            break
+
+    cnt = 0
+    for i in range(len(done)):
+        while True:
+            if cnt < done[i]:
+                cnt += 1
+            else:
+                checkers[cnt] += 1
+                break
+
+    for checker in checkers:
+        if checker != 0:
+            answer.append(checker)
+
+    return answer
