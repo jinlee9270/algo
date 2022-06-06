@@ -30,6 +30,6 @@ for _ in range(t):
 
             if inbound[nxt] == 0:
                 deq.append(nxt)
-    # print(dp)
+                
     print(dp[w])
     
