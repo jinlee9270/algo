@@ -1,0 +1,18 @@
+def solution(records):
+    answer = []
+    users = dict()
+    actions = []
+    
+    for record in records:
+        info = record.split()
+        if len(info) == 3:
+            users[info[1]] = info[2]
+        actions.append([info[0],info[1]])
+    
+    for action in actions:
+        if action[0] == 'Enter':
+            answer.append(users[action[1]] + '님이 들어왔습니다.')
+        elif action[0] == 'Leave':
+            answer.append(users[action[1]] + '님이 나갔습니다.')
+    
+    return answer
