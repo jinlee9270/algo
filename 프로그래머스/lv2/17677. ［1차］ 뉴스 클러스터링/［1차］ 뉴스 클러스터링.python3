@@ -27,11 +27,12 @@ def solution(str1, str2):
         answer = 1 * 65536
     
     else:
-        
         intersection = 0
         union = 0
+        
         set_1 = set(arr_1.keys())
         set_2 = set(arr_2.keys())
+        
         union_set = set_1.union(set_2)
         intersection_set = set_1.intersection(set_2)
         
