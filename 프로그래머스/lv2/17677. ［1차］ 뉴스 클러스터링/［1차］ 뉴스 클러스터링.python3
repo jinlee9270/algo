@@ -1,0 +1,57 @@
+import math
+
+def solution(str1, str2):
+    answer = 0
+    str1 = str1.upper()
+    str2 = str2.upper()
+    arr_1 = dict()
+    arr_2 = dict()
+    
+    for i in range(len(str1) - 1):
+        str_pairs = list(str1[i : i + 2])
+        if ord('A') <= ord(str_pairs[0]) <= ord('Z') and ord('A') <= ord(str_pairs[1]) <= ord('Z'):
+            if str1[i : i + 2] not in arr_1:
+                arr_1[str1[i : i + 2]] = 1
+            else:
+                arr_1[str1[i : i + 2]] += 1
+    
+    for i in range(len(str2) - 1):
+        str_pairs = list(str2[i : i + 2])
+        if ord('A') <= ord(str_pairs[0]) <= ord('Z') and ord('A') <= ord(str_pairs[1]) <= ord('Z'):
+            if str2[i : i + 2] not in arr_2:
+                arr_2[str2[i : i + 2]] = 1
+            else:
+                arr_2[str2[i : i + 2]] += 1
+
+    if len(arr_1) == 0 and len(arr_2) == 0:
+        answer = 1 * 65536
+    
+    else:
+        
+        intersection = 0
+        union = 0
+        set_1 = set(arr_1.keys())
+        set_2 = set(arr_2.keys())
+        union_set = set_1.union(set_2)
+        intersection_set = set_1.intersection(set_2)
+        
+        if union_set == intersection_set:
+            for key in union_set:
+                intersection += min(arr_2[key], arr_1[key])
+                union += max(arr_2[key], arr_1[key])
+        else:
+            symetric_set = union_set - intersection_set
+            
+            for key in symetric_set:
+                if key in arr_1:
+                    union += arr_1[key]
+                else:
+                    union += arr_2[key]
+            
+            for key in intersection_set:
+                intersection += min(arr_1[key], arr_2[key])
+                union += max(arr_1[key], arr_2[key])
+        
+        answer = math.floor((intersection / union) * 65536) 
+    
+    return answer
