@@ -1,74 +1,42 @@
 import sys
 from collections import deque
 
-def D(num):
-    res = num * 2
-    if res > 9999:
-        res %= 10000
-
-    return res
+t = int(input())
 
 
-def S(num):
-    res = num
-    if res == 0:
+def bfs(start, end, visited):
+    q = deque([('', start)])
+    visited[start] = True
 
-        return 9999
-    res -= 1
+    while q:
+        command, current = q.popleft()
+        if current == end:
+            return command
 
-    return res
+        num = (current * 2) % 10000
+        if not visited[num]:
+            visited[num] = True
+            q.append((command + 'D', num))
 
+        num = (current - 1) % 10000
+        if not visited[num]:
+            visited[num] = True
+            q.append((command + 'S', num))
 
-def L(num):
-    front = num % 1000
-    back = num // 1000
-    res = front * 10 + back
+        num = (current % 1000) * 10 + current // 1000
+        if not visited[num]:
+            visited[num] = True
+            q.append((command + 'L', num))
 
-    return res
-
-
-def R(num):
-    front = num % 10
-    back = num // 10
-    res = front * 1000 + back
-
-    return res
-
-
-def oper(start, target):
-    queue = deque()
-    visited = set()
-    queue.append((start, ''))
-    visited.add(start)
-
-    while len(queue) > 0:
-        current, oper = queue.popleft()
-        if current == target:
-            print(oper)
-            return
-
-        temp = D(current)
-        if temp not in visited:
-            visited.add(temp)
-            queue.append((temp, oper+"D"))
-
-        temp = S(current)
-        if temp not in visited:
-            visited.add(temp)
-            queue.append((temp, oper+"S"))
-
-        temp = L(current)
-        if temp not in visited:
-            visited.add(temp)
-            queue.append((temp, oper+"L"))
-
-        temp = R(current)
-        if temp not in visited:
-            visited.add(temp)
-            queue.append((temp, oper+"R"))
+        num = (current % 10) * 1000 + current // 10
+        if not visited[num]:
+            visited[num] = True
+            q.append((command + "R", num))
 
 
-for _ in range(int(input())):
-    start, tartet = map(int, sys.stdin.readline().split())
-    oper(start, tartet)
+for _ in range(t):
+    start, target = map(int, sys.stdin.readline().split())
+    visited = [False] * 10000
+
+    print(bfs(start, target, visited))
     
