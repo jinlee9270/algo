@@ -1,41 +1,39 @@
-def solution(m, n, board):
+def solution(m, n, board) :
     answer = 0
-    new_board = []
+    board = list(list(b) for b in board)
 
-    for temp in board:
-        new_board.append(list(temp))
-
-    while True:
-        checkers = [[0] * n for i in range(m)]
-
-        for i in range(m - 1):
-            for j in range(n - 1):
-                if new_board[i][j] != 0 and new_board[i][j] == new_board[i + 1][j] and new_board[i][j] == new_board[i][j + 1] and new_board[i][
-                    j] == new_board[i + 1][j + 1]:
-                    checkers[i][j] = 1
-                    checkers[i + 1][j] = 1
-                    checkers[i][j + 1] = 1
-                    checkers[i + 1][j + 1] = 1
-
-        count = 0
-        for i in range(m):
-            count += sum(checkers[i])
+    while True :
+        delete = []
+        flag = False
         
-        answer += count
-        
-        if count == 0:
+        for i in range(m - 1) :
+            for j in range(n - 1) :
+                if board[i][j] != 0 and board[i][j] == board[i][j + 1] == board[i + 1][j] == board[i + 1][j + 1] :
+                    delete.append((i, j))
+                    delete.append((i, j + 1))
+                    delete.append((i + 1, j))
+                    delete.append((i + 1, j + 1))
+                    flag = True
+
+        if flag == False :
             break
-        
-        for i in range(m - 1, -1, -1):
-            for j in range(n):
-                if checkers[i][j] == 1:
+
+        for x, y in delete :
+            board[x][y] = 0
+
+        for i in range(m - 1, -1, -1) :
+            for j in range(n) :
+                if board[i][j] == 0 :
                     x = i - 1
-                    while x >= 0 and checkers[x][j] == 1:
+                    while x >= 0 and board[x][j] == 0 :
                         x -= 1
-                    if x < 0:
-                        new_board[i][j] = 0
-                    else:
-                        new_board[i][j] = new_board[x][j]
-                        checkers[x][j] = 1
+                    if x < 0 :
+                        board[i][j] = 0
+                    else :
+                        board[i][j] = board[x][j]
+                        board[x][j] = 0
+
+    for i in range(m) :
+        answer += board[i].count(0)
 
     return answer
