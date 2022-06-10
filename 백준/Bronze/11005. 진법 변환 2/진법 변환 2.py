@@ -1,15 +1,12 @@
-N, b = input().split()
-n = int(N)
-B = int(b)
+n, b = map(int, input().split())
+new_nums = []
 
-trans_B = []
 while n > 0:
-    trans_B.append(n % B)
-    n = n // B
+    new_nums.append(n % b)
+    n = n // b
 
-# print(trans_B)
-for i in range(len(trans_B) - 1, -1, -1):
-    if 10 <= trans_B[i] <= 35:
-        print(chr(trans_B[i] + 55), end='')
+for i in range(len(new_nums) -1, -1, -1):
+    if 10 <= new_nums[i]:
+        print(chr(55 + new_nums[i]), end='')
     else:
-        print(trans_B[i], end='')
+        print(new_nums[i], end='')
