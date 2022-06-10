@@ -1,0 +1,41 @@
+def solution(m, n, board):
+    answer = 0
+    new_board = []
+
+    for temp in board:
+        new_board.append(list(temp))
+
+    while True:
+        checkers = [[0] * n for i in range(m)]
+
+        for i in range(m - 1):
+            for j in range(n - 1):
+                if new_board[i][j] != 0 and new_board[i][j] == new_board[i + 1][j] and new_board[i][j] == new_board[i][j + 1] and new_board[i][
+                    j] == new_board[i + 1][j + 1]:
+                    checkers[i][j] = 1
+                    checkers[i + 1][j] = 1
+                    checkers[i][j + 1] = 1
+                    checkers[i + 1][j + 1] = 1
+
+        count = 0
+        for i in range(m):
+            count += sum(checkers[i])
+        
+        answer += count
+        
+        if count == 0:
+            break
+        
+        for i in range(m - 1, -1, -1):
+            for j in range(n):
+                if checkers[i][j] == 1:
+                    x = i - 1
+                    while x >= 0 and checkers[x][j] == 1:
+                        x -= 1
+                    if x < 0:
+                        new_board[i][j] = 0
+                    else:
+                        new_board[i][j] = new_board[x][j]
+                        checkers[x][j] = 1
+
+    return answer
