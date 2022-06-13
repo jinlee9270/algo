@@ -1,0 +1,23 @@
+import re
+
+def solution(s):
+    answer = []
+    dic = dict()
+    s_filter = re.split('{|,|}',s)
+    
+    for temp in s_filter:
+        if temp == '':
+            continue
+        else:
+            if int(temp) not in dic:
+                dic[int(temp)] = 1
+            else:
+                dic[int(temp)] += 1
+    
+    result = list(dic.items())         
+    result_sorted = sorted(result, key = lambda x : -x[1])
+    
+    for ans in result_sorted:
+        answer.append(ans[0])
+    
+    return answer
