@@ -1,0 +1,38 @@
+def solution(files):
+    answer = []
+    inf = 1001
+    split_points = [[inf] * 2 for _ in range(len(files))]
+    upper_files = []
+    
+    for i in range(len(files)):
+        file = files[i]
+        upper_files.append(file.upper())
+        number_count = 0
+        for j in range(len(file) - 1):
+            if not file[j].isdigit() and file[j + 1].isdigit():
+                split_points[i][0] = j      
+        
+            elif file[j].isdigit() and not file[j + 1].isdigit():
+                if number_count < 5:
+                    split_points[i][1] = j
+                    break
+                number_count += 1
+                split_points[i][1] = j
+        
+        if split_points[i][1] == inf:
+            split_points[i][1] = len(files[i]) - 1
+    
+    paresing_file_names = []
+    for idx, split_here in enumerate(split_points):
+        temp = upper_files[idx]
+        head = temp[:split_here[0] + 1]
+        number = int(temp[split_here[0] + 1:split_here[1] + 1])
+
+        paresing_file_names.append([head, number, idx])
+    
+    sorted_results = sorted(paresing_file_names, key=lambda x: (x[0], x[1], x[2]))
+    
+    for result in sorted_results:
+        answer.append(files[result[2]])
+
+    return answer
