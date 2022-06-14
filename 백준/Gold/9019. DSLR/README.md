@@ -1,5 +1,7 @@
 # [Gold IV] DSLR - 9019 
 
+# [문제 설명 블로그](https://velog.io/@jinlee/%EB%B0%B1%EC%A4%80-9019-DSLR)
+
 [문제 링크](https://www.acmicpc.net/problem/9019) 
 
 ### 성능 요약
