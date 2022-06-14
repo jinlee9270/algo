@@ -1,5 +1,6 @@
 # [level 2] [3차] 파일명 정렬 - 17686 
 
+[문제 설명 블로그](https://velog.io/@jinlee/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-3%EC%B0%A8-%ED%8C%8C%EC%9D%BC%EB%AA%85-%EC%A0%95%EB%A0%AC)
 [문제 링크](https://programmers.co.kr/learn/courses/30/lessons/17686) 
 
 ### 성능 요약
