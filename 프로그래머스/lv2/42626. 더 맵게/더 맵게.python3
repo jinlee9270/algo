@@ -1,0 +1,23 @@
+import heapq
+
+def solution(scoville, K):
+    answer = 0
+    heap = []
+    
+    for temp in scoville:
+        heapq.heappush(heap, temp)
+    
+    while len(heap) >= 2:
+        spicy_1 = heapq.heappop(heap)
+        spicy_2 = heapq.heappop(heap)
+        new_spicy = spicy_1 + (spicy_2 * 2)
+        heapq.heappush(heap, new_spicy)
+        answer += 1
+        
+        if heap[0] > K:
+            break
+    
+    if heap[0] < K:
+        answer = -1
+    
+    return answer
