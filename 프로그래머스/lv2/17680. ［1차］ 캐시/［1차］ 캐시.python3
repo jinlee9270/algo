@@ -1,0 +1,22 @@
+from collections import deque
+
+def solution(cacheSize, cities):
+    answer = 0
+    caches = deque()
+    
+    for city in cities:
+        if city.lower() not in caches:
+            if len(caches) < cacheSize:
+                caches.append(city.lower())
+            elif len(caches) == cacheSize and cacheSize != 0:
+                caches.popleft()
+                caches.append(city.lower())
+            elif cacheSize == 0:
+                pass
+            answer += 5
+        else:
+            caches.remove(city.lower())
+            caches.append(city.lower())
+            answer += 1
+        
+    return answer
