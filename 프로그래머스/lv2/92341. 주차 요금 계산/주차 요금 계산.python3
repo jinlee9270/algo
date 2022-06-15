@@ -1,0 +1,38 @@
+def solution(fees, records):
+    answer = []
+    parkings = dict()
+    
+    for record in records:
+        time, number, status = record.split()
+        
+        if number not in parkings:
+            parkings[number] = [time]
+        else:
+            parkings[number].append(time)
+    
+    for key in parkings:
+        if len(parkings[key]) % 2 != 0:
+            parkings[key].append("23:59")
+    
+    for key in parkings:
+        using_time = 0
+        for idx in range(0, len(parkings[key]), 2):
+            in_h, in_m = map(int, parkings[key][idx].split(':'))
+            out_h, out_m = map(int, parkings[key][idx + 1].split(':'))
+            using_time += (out_h * 60 + out_m) - (in_h * 60 + in_m) 
+        if using_time <= fees[0]:
+            parkings[key] = fees[1]
+        else:
+            if (using_time - fees[0]) % fees[2] == 0:
+                parkings[key] = fees[1] + ((using_time - fees[0]) // fees[2]) * fees[3]
+            else:
+                parkings[key] = fees[1] + ((using_time - fees[0]) // fees[2]) * fees[3] + fees[3]
+    
+    fee_results = list(parkings.items())
+    
+    sorted_car_num = sorted(fee_results, key=lambda x : int(x[0]))
+    
+    for car in sorted_car_num:
+        answer.append(car[1])
+    
+    return answer
