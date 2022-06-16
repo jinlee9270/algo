@@ -1,0 +1,26 @@
+def solution(priorities, location):
+    stack = []
+    prints = []
+    mx = max(priorities)
+    answer = 0
+    for idx, priority in enumerate(priorities):
+        stack.append((idx, priority))
+    
+    while len(stack) > 0:
+        if stack[0][1] == mx:
+            temp = stack.pop(0)
+            prints.append(temp)
+            mx = 0
+            
+            for i in stack:
+                if i[1] > mx:
+                    mx = i[1]
+        else:
+            temp = stack.pop(0)
+            stack.append(temp)
+
+    for idx, finder in enumerate(prints):
+        if finder[0] == location:
+            answer = idx + 1
+    
+    return answer
