@@ -1,20 +1,33 @@
 def solution(name):
-    if set(name) == {'A'}:
-        return 0
+    list_name = list(name)
 
-    answer = float('inf')
-    for i in range(len(name) // 2):
-        left_moved = name[-i:] + name[:-i]
-        right_moved = name[i:] + name[:i]
-        for n in [left_moved, right_moved[0] + right_moved[:0:-1]]:
-            while n and n[-1] == 'A':
-                n = n[:-1]
+    move = 0
+    length = len(list_name)
+    
+    for alpha in list_name:
+        move += min(ord(alpha) - ord('A'), 91 -  ord(alpha))
 
-            row_move = i + len(n) - 1
-            col_move = 0
-            for c in map(ord, n):
-                col_move += min(c - 65, 91 - c)
+    answer = move + length - 1
+    
+    list_name.append(' ')
 
-            answer = min(answer, row_move + col_move)
+    a_start = -1
+    for index, ch in enumerate(list_name):
+        if ch == 'A':
+            if a_start < 0:
+                a_start = index
+        elif a_start >= 0:
+            a_end = index - 1
+
+            prefix_tour = max(0, a_start - 1)
+            postfix_tour = length - 1 - a_end
+
+            answer = min(
+                answer,
+                move + prefix_tour * 2 + postfix_tour,
+                move + postfix_tour * 2 + prefix_tour
+            )
+
+            a_start = -1
 
     return answer
