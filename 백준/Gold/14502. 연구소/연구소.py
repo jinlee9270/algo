@@ -31,17 +31,28 @@ def bfs():
     answer = max(answer, zero_cnt)
 
 
-def make_wall(cnt):
+def make_wall(r, c, cnt):
+    if cnt > 3:
+        return
+
+    #  어느 시점에 벽 3개를 이미 다 세웠음. 더 볼 필요 없음
     if cnt == 3:
         bfs()
         return
+    
+    # 다 돌았음. cnt가 3 미만인 경우에도 더 돌 곳이 없으니 끝냄
+    if r == n:
+        return
 
-    for i in range(n):
-        for j in range(m):
-            if maps[i][j] == 0:
-                maps[i][j] = 1
-                make_wall(cnt + 1)
-                maps[i][j] = 0
+    new_c = (c + 1) % m
+    new_r = r + 1 if new_c == 0 else r
+
+    make_wall(new_r, new_c, cnt)
+
+    if maps[r][c] == 0:
+        maps[r][c] = 1
+        make_wall(new_r, new_c, cnt + 1)
+        maps[r][c] = 0
 
 
 n, m = map(int, input().split())
@@ -52,5 +63,5 @@ for i in range(n):
     maps.append(temp)
 
 answer = 0
-make_wall(0)
+make_wall(0, 0, 0)
 print(answer)
