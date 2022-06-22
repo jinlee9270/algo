@@ -1,5 +1,5 @@
 # [Gold V] 연구소 - 14502 
-
+# [문제 해설 블로그](https://velog.io/@jinlee/%EB%B0%B1%EC%A4%80-%EC%97%B0%EA%B5%AC%EC%86%8C)
 [문제 링크](https://www.acmicpc.net/problem/14502) 
 
 ### 성능 요약
