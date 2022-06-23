@@ -9,7 +9,6 @@ for i in range(0, N):
     nums.append(int(sys.stdin.readline()))
 
 nums.sort()
-# print(nums)
 MN_minus = 2000000001
 s = 1
 
