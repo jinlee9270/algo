@@ -1,0 +1,12 @@
+def solution(brown, yellow):
+    answer = []
+    total = brown + yellow
+    w_p_h = (yellow - 4 - total) // -2
+    
+    idx = 1
+    while True:
+        if idx * (w_p_h - idx) == total:
+            return [w_p_h - idx, idx]
+        idx += 1
+            
+    return answer
