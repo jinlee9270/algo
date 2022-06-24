@@ -1,0 +1,14 @@
+def solution(clothes):
+    answer = 1
+    dic = dict()
+    sep_clothes = []
+    for wear in clothes:
+        if wear[1] not in dic:
+            dic[wear[1]] = 1
+        else:
+            dic[wear[1]] += 1
+
+    for key in dic:
+        answer *= dic[key] + 1
+        
+    return answer - 1
