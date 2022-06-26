@@ -3,13 +3,11 @@ bomb_string = list(input())
 
 stack = []
 for string in strings:
-    # print(stack)
     is_bomb = False
     if len(stack) < len(bomb_string) - 1:
         stack.append(string)
 
     else:
-        # print(string,bomb_string[-1])
         if string == bomb_string[-1]:
             stack.append(string)
             # print(stack[len(stack) - len(bomb_string):])
