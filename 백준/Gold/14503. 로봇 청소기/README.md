@@ -1,4 +1,5 @@
 # [Gold V] 로봇 청소기 - 14503 
+# [문제 설명](https://velog.io/@jinlee/%EB%B0%B1%EC%A4%80-14503-%EC%B2%AD%EC%86%8C%EA%B8%B0)
 
 [문제 링크](https://www.acmicpc.net/problem/14503) 
 
