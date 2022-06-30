@@ -1,5 +1,5 @@
 # [Gold III] 아기 상어 - 16236 
-
+# [블로그 설명](https://www.acmicpc.net/problem/16236)
 [문제 링크](https://www.acmicpc.net/problem/16236) 
 
 ### 성능 요약
