@@ -25,5 +25,4 @@ while len(heap) > 0:
         if 0 <= nr < r and 0 <= nc < c and height < origin[nr][nc]:
             dp[h_info[2]][h_info[1]] = dp[h_info[2]][h_info[1]] + dp[nr][nc]
 
-# print(dp)
 print(dp[r-1][c-1])
