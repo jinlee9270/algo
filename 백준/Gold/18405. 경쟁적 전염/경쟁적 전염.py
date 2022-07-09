@@ -38,5 +38,5 @@ queue.sort()
 end_time, final_x, final_y = map(int, input().split())
 
 infection(end_time)
-# print(incubator)
+
 print(incubator[final_x - 1][final_y - 1])
