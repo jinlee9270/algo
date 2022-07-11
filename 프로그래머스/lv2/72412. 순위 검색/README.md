@@ -1,5 +1,5 @@
 # [level 2] 순위 검색 - 72412 
-
+# [블로그 문제 설명](https://velog.io/@jinlee/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%88%9C%EC%9C%84-%EA%B2%80%EC%83%89)
 [문제 링크](https://programmers.co.kr/learn/courses/30/lessons/72412) 
 
 ### 성능 요약
