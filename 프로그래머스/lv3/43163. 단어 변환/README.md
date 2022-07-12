@@ -1,5 +1,5 @@
 # [level 3] 단어 변환 - 43163 
-
+[블로그 설명은 여기서](https://velog.io/@jinlee/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%8B%A8%EC%96%B4-%EB%B3%80%ED%99%98)
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/43163) 
 
 ### 성능 요약
