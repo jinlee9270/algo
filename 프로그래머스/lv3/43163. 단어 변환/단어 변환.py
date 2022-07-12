@@ -32,7 +32,6 @@ def solution(begin, target, words):
                     visited[nxt] = visited[cur] + 1
                     q.append(nxt)
                     
-        print(visited, edges)
         if visited[tar_idx] != float('inf'):
             return visited[tar_idx]
         else:
