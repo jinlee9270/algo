@@ -34,7 +34,5 @@ for i in range(0, test_case):
                 book_list[k] = False
                 count = count + 1
                 break
-            # print(k, book_list,sorted_student_wanted[j][0],sorted_student_wanted[j][1])
-        # print(book_list)
     print(count)
     
